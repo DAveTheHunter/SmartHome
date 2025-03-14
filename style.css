@@ -98,49 +98,48 @@ body{
   }
 #out-1:hover{
     cursor: pointer;
-    animation: scale ease-in-out 0.5s;
-    animation-duration: 1.5s;
+    animation: anime ease-in;
+    animation-duration: infinite;
 }  
 #out-2:hover{
     cursor: pointer;
-    animation: scale ease-in-out 0.5s;
-    animation-duration: 1.5s;
+    animation: anime ease-in;
+    animation-duration: infinite;
 }  
 #out-3:hover{
     cursor: pointer;
-    animation: scale ease-in-out 0.5s;
-    animation-duration: 1.5s;
+    animation: anime ease-in 1s;
+    animation-duration: infinite;
 }  
 #out-4:hover{
     cursor: pointer;
-    animation: scale ease-in-out 0.5s;
-    animation-duration: 1.5s;
+    animation: anime ease-in;
+    animation-duration: infinite;
 }  
 #out-5:hover{
     cursor: pointer;
-    animation: scale ease-in-out 0.5s;
-    animation-duration: 1.5s;
+    animation: anime ease-in 0.5s;
+    animation-duration: infinite;
 }  
 #out-6:hover{
     cursor: pointer;
-    animation: scale ease-in-out 0.5s;
-    animation-duration: 1.5s;
+    animation: anime ease-in 0.5s;
+    animation-duration: infinite;
 }  
 #out-7:hover{
     cursor: pointer;
-    animation: scale ease-in-out 0.5s;
-    animation-duration: 1.5s;
+    animation: anime ease-in 0.5s;
+    animation-duration: infinite;
 }  
 #out-8:hover{
     cursor: pointer;
-    animation: scale ease-in-out 0.5s;
-    animation-duration: 1.5s;
+    animation: anime ease-in-out 1s infinite;
 }  
-@keyframes scale {
+@keyframes anime {
     from{
-        scale: 1;
+      scale: 1;
     }
     to{
-        scale: 1.5;
+        scale: 1.2;
     }
 }

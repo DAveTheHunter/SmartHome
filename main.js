@@ -26,7 +26,7 @@ async function fetchInfo(url){
 }
 
 function checkStatus(){
-    
+   
 }
 
 fetchInfo();
