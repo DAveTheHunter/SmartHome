@@ -6,7 +6,7 @@ const Main = () => {
   const [windowClosed, setWindowClosed] = useState('true')
   const [doorClosed, setDoorClosed] = useState('Closed')
   const [bulb1, setBulb1] = useState('Off')
-  const url = ''
+  const url = '127.0.0.1/5000'
   const fetchData = async (url) => {
     const data = await fetch(url)
     const responce = await data.json()
