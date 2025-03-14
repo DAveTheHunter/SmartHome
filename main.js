@@ -1,12 +1,3 @@
-//define status variables
-let leackage_s = false;
-let blockage_s = false;
-let window_s = true;
-let door_s = true;
-let TV_s = false;
-let bulb1_s = false;
-let bulb2_s = false;
-let bulb3_s = false;
 //define HTML variables
 let leackage = document.getElementById('leackage')
 let blockage = document.getElementById('blockage')
@@ -18,7 +9,7 @@ let bulb2 = document.getElementById('bulb2');
 let bulb3 = document.getElementById('bulb3');
 
 //define the url for arduinio 
-const url = ''
+const url = '127.0.0.1:5000/api/alerts'
 
 async function fetchInfo(url){
     const data = await fetch(url)
@@ -26,7 +17,7 @@ async function fetchInfo(url){
 }
 
 function checkStatus(){
-   
+   if()
 }
 
 fetchInfo();

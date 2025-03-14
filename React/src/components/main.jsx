@@ -1,13 +1,57 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./main.css";
+
 const Main = () => {
-  const [leackage, setLeackage] = useState("false");
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [leakage, setLeakage] = useState("false");
   const [blockage, setBlockage] = useState("false");
-  const [windowClosed, setWindowClosed] = useState("true");
   const [motion, setMotion] = useState("false");
   const [doorClosed, setDoorClosed] = useState("Closed");
-  const [bulb1, setBulb1] = useState("Off");
-  const url = "127.0.0.1:5000/api/alerts";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/alerts');
+        if (!response.ok) {
+          throw new Error("Connection problem");
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    const interval = setInterval(fetchData, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      handleDisplay();
+    }
+  }, [data]);
+
+  console.log(data);
+
+  const handleDisplay = () => {
+    if (data.event === "blockage_alert") {
+      setBlockage(data.message === "Blockage detected in the system!" ? "true" : "false");
+    }
+    if (data.event === "leakage_alert") {
+      setLeakage(data.message === "Water leakage detected!" ? "true" : "false");
+    }
+    if (data.event === "motion_detected") {
+      if (data.message === "Motion detected near the door!") {
+        setMotion("true");
+        setDoorClosed("Open");
+      } else {
+        setMotion("false");
+        setDoorClosed("Closed");
+      }
+    }
+  };
+
   return (
     <div>
       <div className="container">
@@ -20,19 +64,13 @@ const Main = () => {
         </div>
         <div className="actions">
           <div className="out" id="out-1">
-            Leackage: <span id="leackage">{leackage}</span>
+            Leakage: <span id="leakage">{leakage}</span>
           </div>
           <div className="out" id="out-2">
             Blockage: <span id="blockage">{blockage}</span>
           </div>
-          <div className="out" id="out-3">
-            Window: <span id="window">{windowClosed}</span>
-          </div>
           <div className="out" id="out-4">
             Door: <span id="door">{doorClosed}</span>
-          </div>
-          <div className="out" id="out-6">
-            Bulb1: <span id="bulb1">{bulb1}</span>
           </div>
         </div>
       </div>
